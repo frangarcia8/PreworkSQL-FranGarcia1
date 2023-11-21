@@ -47,9 +47,7 @@ FROM public.clientes c
 LEFT JOIN public.pedidos p
 ON c.id = p.cliente_id
 
-/*17. Realizar una consulta que muestre el nombre del producto y la cantidad total de pedidos de ese producto. 
-
-CORRERGIR*/
+/*17. Realizar una consulta que muestre el nombre del producto y la cantidad total de pedidos de ese producto. */
 
 SELECT p.producto as producto, p.cantidad as cantidad
 FROM public.pedidos p
@@ -63,19 +61,14 @@ ADD COLUMN fecha DATE
 
 ALTER TABLE public.pedidos
 ADD COLUMN IF NOT EXISTS id_producto INTEGER
-
 ALTER TABLE pedidos
 ADD CONSTRAINT fk_product_pedido 
 FOREIGN KEY (id_producto) 
 REFERENCES productos(id)
 
 
-/*20. Realizar una consulta que muestre los nombres de los clientes, los nombres de los productos y las cantidades de los pedidos donde coincida la clave externa.
+/*20. Realizar una consulta que muestre los nombres de los clientes, los nombres de los productos y las cantidades de los pedidos donde coincida la clave externa.*/
 
-CORREGIR*/
-
-SELECT c.nombre AS NombreCliente, p.producto AS NombreProducto, p.cantidad
-FROM public.clientes c
-INNER JOIN public.pedidos p ON c.id = p.cliente_id
-INNER JOIN public.productos pd ON pd.id = p.id_producto
+SELECT c.customername, p.producto, p.cantidad FROM public.clientes c
+JOIN public.pedidos p ON c.customerid = p.cliente_id 
 
